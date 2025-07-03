@@ -4,59 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2c3e50; /* Dark Blue */
+            --secondary-color: #3498db; /* Bright Blue */
+            --accent-color: #e74c3c; /* Reddish Accent */
+            --light-gray: #ecf0f1;
+            --dark-gray: #34495e;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --body-bg: #f8f9fa;
+        }
+
         body {
-            font-family: sans-serif;
-            line-height: 1.6;
+            font-family: 'Lato', sans-serif;
+            line-height: 1.7;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--body-bg);
+            color: var(--text-color);
         }
         .container {
-            width: 80%;
-            margin: auto;
+            width: 90%;
+            max-width: 1100px; 
+            margin: 40px auto; 
             overflow: hidden;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 40px; 
+            background-color: var(--card-bg);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1); 
+            border-radius: 10px; 
         }
         header {
             text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #ccc;
+            padding-bottom: 25px;
+            margin-bottom: 40px; 
+            border-bottom: 2px solid var(--secondary-color); 
+        }
+        #profile-pic {
+            width: 180px; 
+            height: 180px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-bottom: 20px; 
+            border: 5px solid var(--secondary-color); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         header h1 {
             margin: 0;
-            color: #333;
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em; 
+            font-weight: 700;
         }
         section {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--light-gray);
         }
-        section:last-child {
+        section:last-of-type { /* Changed from section:last-child to avoid footer border */
             border-bottom: none;
         }
         h2 {
-            color: #555;
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 20px; /* Added margin to section titles */
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            display: inline-block; /* To make border only under text */
         }
         ul {
-            list-style-type: disc;
-            margin-left: 20px;
+            list-style-type: none; /* Changed from disc for a cleaner look */
+            margin-left: 0; /* Reset margin */
+            padding-left: 0; 
+        }
+        ul li {
+            padding: 5px 0;
+            border-bottom: 1px dashed #eee; /* Subtle separator for list items */
+        }
+        ul li:last-child {
+            border-bottom: none;
+        }
+        ul li strong { /* For language proficiency */
+            color: var(--secondary-color);
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+        }
+        .certification-item {
+            border: none; /* Removed border, using shadow instead */
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--light-gray); /* Lighter background for cards */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .certification-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .certification-item h3 {
+            font-size: 1.2em;
+            margin-top: 0;
+            margin-bottom: 10px; /* Added margin */
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .certification-item p {
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        .certification-item p em {
+            color: var(--dark-gray);
+            font-style: normal;
+        }
+        .certification-item p small {
+            font-size: 0.85em;
+            color: #777;
+            display: block; /* Make credential ID take its own line */
+            margin-top: 5px;
         }
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            margin-top: 20px;
+            padding: 25px;
+            background-color: var(--primary-color);
+            color: var(--light-gray);
+            margin-top: 30px;
+            border-top-left-radius: 10px; /* Match container radius */
+            border-top-right-radius: 10px; /* Match container radius */
         }
+        footer p {
+            margin: 0;
+        }
+
+        /* Basic responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+                margin-top: 20px;
+            }
+            header h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            #profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+            .certifications-grid {
+                grid-template-columns: 1fr; /* Stack items on smaller screens */
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <header>
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQH_8_stHXMs5w/profile-displayphoto-shrink_800_800/B4DZSPEgl_HUAc-/0/1737567112236?e=1756944000&v=beta&t=WxKI0qPpAvVB67Y0vzyXmZwBe-Fp2aHSor8DzR9k68E" alt="Profile Picture" id="profile-pic">
             <h1>My Professional Profile</h1>
         </header>
 
@@ -87,6 +199,72 @@
                 <li>Strong communication and collaboration abilities.</li>
                 <li>Adaptable and quick learner of new technologies.</li>
                 <li>Proven ability to manage projects and meet deadlines.</li>
+            </ul>
+        </section>
+
+        <section id="licenses">
+            <h2>Licenses & Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-item">
+                    <h3>Machine Learning</h3>
+                    <p>DeepLearning.AI, Coursera, Stanford CPD, UVM</p>
+                    <p><em>Issued Aug 2023</em></p>
+                    <p><small>Credential ID: 066a9f695ccca4302eea1caf4e428982</small></p>
+                </div>
+                <div class="certification-item">
+                    <h3>AWS Cloud Technical Essentials</h3>
+                    <p>Amazon Web Services (AWS)</p>
+                    <p><em>Issued Mar 2023</em></p>
+                    <p><small>Credential ID: MPKQCZ8BT7X4</small></p>
+                </div>
+                <div class="certification-item">
+                    <h3>Cybersecurity Roles, Processes & Operating System Security</h3>
+                    <p>IBM</p>
+                    <p><em>Issued Nov 2022</em></p>
+                    <p><small>Credential ID: QZHPYWHG5B7F</small></p>
+                </div>
+                <div class="certification-item">
+                    <h3>Foundations of Project Management</h3>
+                    <p>Google (via Coursera - CGCG)</p>
+                    <p><em>Issued Oct 2022</em></p>
+                    <p><small>Credential ID: FXTNPBG6UFF4</small></p>
+                </div>
+                <div class="certification-item">
+                    <h3>Git and GitHub</h3>
+                    <p>Google (via Coursera - CGCG)</p>
+                    <p><em>Issued Oct 2022</em></p>
+                    <p><small>Credential ID: G5SHU325NNWK</small></p>
+                    <p><em>Skills: Git</em></p>
+                </div>
+                <div class="certification-item">
+                    <h3>Introduction to Cybersecurity Tools & Cyber Attacks</h3>
+                    <p>IBM</p>
+                    <p><em>Issued Oct 2022</em></p>
+                    <p><small>Credential ID: RSABLTXBRQE4</small></p>
+                    <p><em>Skills: Bash</em></p>
+                </div>
+                <div class="certification-item">
+                    <h3>User Experience (UX) Design</h3>
+                    <p>Google</p>
+                    <p><em>Issued Oct 2022</em></p>
+                    <p><small>Credential ID: ZGCLCHCCN8YB</small></p>
+                </div>
+                <div class="certification-item">
+                    <h3>Certificate in DevOps (Jenkins)</h3>
+                    <p>BTK Akademi</p>
+                    <p><em>Issued Sep 2022</em></p>
+                    <p><small>Credential ID: bx1hGNX47p</small></p>
+                    <p><em>Skills: Jenkins</em></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="languages">
+            <h2>Languages</h2>
+            <ul>
+                <li><strong>Arabic:</strong> Native or bilingual proficiency</li>
+                <li><strong>English:</strong> Professional working proficiency</li>
+                <li><strong>Turkish:</strong> Native or bilingual proficiency</li>
             </ul>
         </section>
 
